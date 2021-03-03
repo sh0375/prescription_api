@@ -32,6 +32,17 @@ class PharmacySerializer(serializers.ModelSerializer):
 
 
 class BookingSerializer(serializers.HyperlinkedModelSerializer):
+    doctor = DoctorSerializer(read_only=True)
+    doctor_id = serializers.IntegerField()
+
+    user = UserSerializer(read_only=True)
+    user_id = serializers.IntegerField()
+
+    drug = DrugSerializer(read_only=True)
+    drug_id = serializers.IntegerField()
+
+    pharmacy = PharmacySerializer(read_only=True)
+    pharmacy_id = serializers.IntegerField()
 
     class Meta:
         model = Booking
